@@ -1,0 +1,5 @@
+/target
+
+# Ignore custom instructions
+/.gemini
+/.claude
