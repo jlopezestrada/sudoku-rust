@@ -1,8 +1,34 @@
+use std::fmt;
+
 pub const SIZE: usize = 9;
 
 #[derive(Debug, Clone)]
 pub struct Board {
     cells: [[u8; SIZE]; SIZE],
+}
+
+impl fmt::Display for Board {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        for row in 0..SIZE {
+            if row % 3 == 0 {
+                writeln!(f, "+-------+-------+-------+")?;
+            }
+            for col in 0..SIZE {
+                if col % 3 == 0 {
+                    write!(f, "| ")?;
+                }
+                let val = self.cells[row][col];
+                if val == 0 {
+                    write!(f, ". ")?;
+                } else {
+                    write!(f, "{} ", val)?;
+                }
+            }
+            writeln!(f, "|")?;
+        }
+        writeln!(f, "+-------+-------+-------+")?;
+        Ok(())
+    }
 }
 
 impl Board {

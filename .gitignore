@@ -3,3 +3,5 @@
 # Ignore custom instructions
 /.gemini
 /.claude
+GEMINI.md
+CLAUDE.md
